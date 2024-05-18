@@ -25,9 +25,15 @@ function SelectMode() {
         onChange={handleChange}
       >
         <MenuItem value={"light"}>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
+          >
             <LightModeIcon /> Light
-          </div>
+          </Box>
         </MenuItem>
         <MenuItem value={"dark"}>
           <Box
