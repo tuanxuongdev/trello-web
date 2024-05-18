@@ -32,6 +32,7 @@ function AppBar() {
             component={TrelloIcon}
             inheritViewBox
             sx={{ color: "primary.main" }}
+            fontSize="small"
           />
           <Typography
             variant="span"
@@ -59,12 +60,18 @@ function AppBar() {
         />
         <SelectMode />
         <Tooltip title="Notifications">
-          <Badge color="secondary" variant="dot" sx={{ cursor: "pointer" }}>
+          <Badge
+            color="secondary"
+            variant="dot"
+            sx={{ cursor: "pointer", color: "primary.main" }}
+          >
             <NotificationsNone />
           </Badge>
         </Tooltip>
-        <Tooltip title="Notifications">
-          <HelpOutlineOutlinedIcon sx={{ cursor: "pointer" }} />
+        <Tooltip title="Helps">
+          <HelpOutlineOutlinedIcon
+            sx={{ cursor: "pointer", color: "primary.main" }}
+          />
         </Tooltip>
         <Profiles />
       </Box>
