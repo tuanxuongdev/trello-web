@@ -1,5 +1,5 @@
 import { Box, InputAdornment, SvgIcon, Typography } from "@mui/material";
-import SelectMode from "~/components/ModeSelect";
+import SelectMode from "~/components/ModeSelect/ModeSelect";
 import { ReactComponent as TrelloIcon } from "~/assets/trello.svg";
 import { Apps, NotificationsNone } from "@mui/icons-material";
 import Workspaces from "./Menus/Workspaces";
