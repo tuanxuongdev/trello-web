@@ -44,7 +44,11 @@ function BoardContent({ board }) {
   useEffect(() => {
     setOrderedColumns(mapOrder(board?.columns, board?.columnOrderIds, "_id"));
   }, [board]);
-
+  const findColumnByCardId = (cardId) => {
+    return orderedColumns
+      .find((column) => column.cards.map((card) => card._id))
+      ?.includes(cardId);
+  };
   const handleDragStart = (event) => {
     setActiveDragItemId(event?.active?.id);
     setActiveDragItemType(
@@ -54,7 +58,24 @@ function BoardContent({ board }) {
     );
     setActiveDragItemData(event?.active?.data?.current);
   };
+
+  const handleDragOver = (event) => {
+    if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.COLUMN) {
+      return;
+    }
+    const { active, over } = event;
+    if (!active || !over) return;
+
+    const {
+      id: activeDraggingCardId,
+      data: { current: activeDraggingCardData },
+    } = active;
+    const { id: overCardId } = over;
+  };
   const handleDragEnd = (event) => {
+    if (activeDragItemType === ACTIVE_DRAG_ITEM_TYPE.CARD) {
+      return;
+    }
     const { active, over } = event;
     if (!over) return;
     if (active.id !== over.id) {
@@ -76,6 +97,7 @@ function BoardContent({ board }) {
   return (
     <DndContext
       sensors={sensors}
+      onDragOver={handleDragOver}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
